@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="puzzles">
+<head>
+    <meta charset="UTF-8">
+    <title>Puzzles</title>
+    <script src="angularScripts/angular.js"></script>
+    <script type="text/javascript" src="angularScripts/angular-route.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script type="text/javascript" src="angular-local-storage.min.js"></script>
+
+    <script src="ctrls.js"></script>
+    <script type="text/javascript" src="xml2json.js"></script>
+    <script type="text/javascript" src="public/javascripts/js.js"></script>
+    <link rel="stylesheet" type="text/css" href="public/stylesheets/style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ribeye+Marrow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <script>
+        function hide() {
+            var x=document.getElementById("tohide");
+            x.style.display='block';
+            x=document.getElementById("tohide2");
+            x.style.display='block';
+            x=document.getElementById("tohide3");
+            x.style.display='none';
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <div ng-controller="mainController as mainCtrl" >
+        <table valign="top" width="100%">
+            <tr>
+                <th><img src="logo.png" style="width:50px; padding-top: 5px">&nbsp;&nbsp;&nbsp;Puzzles</th>
+                <th colspan="1"><a ng-hide="!mainCtrl.userservice.isLoggedIn" href="#/cart"><img src="cart.png" style="width:50px; float: right"></a></th>
+                <th class="hello" colspan="5" style="text-align: right">Hello {{mainCtrl.userservice.userName}}<br> <div style="font-size: 16px" ng-show="mainCtrl.userservice.isLoggedIn">Last login: {{mainCtrl.userservice.lastLogin| date : 'medium'}}</div></th>
+            </tr>
+            <tr valign="top">
+                <td>Why is it called puzzles? That's the puzzle.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+                <td><span><a class="links" href="#/">Home&emsp;</a></span></td>
+                <td><span><a ng-hide="mainCtrl.userservice.isLoggedIn" class="links" href="#/login">Login&emsp;</a></span></td>
+                <td><span><a ng-hide="mainCtrl.userservice.isLoggedIn" class="links" href="#/register">Register&emsp;</a></span></td>
+                <td><span><a ng-hide="!mainCtrl.userservice.isLoggedIn" class="links" href="#/cart">Cart&emsp;</a></span></td>
+                <td><span><a  class="links" href="#/products">Products&emsp;</a></span></td>
+                <td><span><a ng-click="mainCtrl.userservice.logout()" ng-hide="!mainCtrl.userservice.isLoggedIn" class="links" href="#/">LogOut&emsp;</a></span></td>
+                <td> <span><a class="links" id="myButton" onclick="modelbox()">About</a></span></td>
+
+                <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h1>Welcome to our puzzle store!</h1>
+                            <h3>We both have passion to puzzles and we finding it very exciting solving them so we would like to spread this love with the world.<br>
+                                We found it difficult to choose fonts for the site and getting used for work with nodeJS and Angular.</h3>
+                            <h2>here is some of our previous work:<br><a href="https://darnet.000webhostapp.com/">Dar's Site</a><br><a href="https://trilulu.000webhostapp.com/">Carmela's Site</a><br>
+                                <a href="http://alonprofile.com/DarCarmela/index.html">Our very awesome PAC-MAN</a>
+                            </h2>
+
+                        </div>
+                    </div>
+            </tr>
+        </table>
+    </div>
+</header>
+<ng-view></ng-view>
+<!--<footer>
+    <center><div>
+        <a href="https://trilulu.000webhostapp.com/">Carmela's Site</a>
+        <img src="logo.png" style="width:50px">
+        <a href="https://darnet.000webhostapp.com/">Dar's Site</a>
+    </div></center>
+
+</footer>
+<script>
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById("myButton");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+-->
+</body>
+</html>
